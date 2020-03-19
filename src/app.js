@@ -1,7 +1,6 @@
 const path = require('path')
 const express = require('express')
 const fs = require('fs');
-const http = require('http');
 const https = require('https');
 // var forceSsl = require('force-ssl-heroku');
 
@@ -17,7 +16,7 @@ const options = {
 };
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = 443
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../dist')
