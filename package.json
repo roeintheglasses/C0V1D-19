@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/roeintheglasses/C0V1D-19#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "force-ssl-heroku": "^1.0.2"
   }
 }
