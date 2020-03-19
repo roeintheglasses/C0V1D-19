@@ -10,7 +10,7 @@ const privateKey = fs.readFileSync(__dirname + '/sslforfree/private.key');
 const certificate = fs.readFileSync(__dirname + '/sslforfree/certificate.crt');
 const ca = fs.readFileSync(__dirname + '/sslforfree/ca_bundle.crt');
 
-const credentials = {
+const options = {
     key: privateKey,
     cert: certificate,
     ca: ca
@@ -28,13 +28,8 @@ app.use(express.static(publicDirectoryPath, {
 }))
 // app.use(forceSsl);
 
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer(credentials, app);
+var server = https.createServer(options, app);
 
-httpServer.listen(80, () => {
-    console.log('HTTP Server running on port 80');
-});
-
-httpsServer.listen(443, () => {
-    console.log('HTTPS Server running on port 443');
+server.listen(port, () => {
+    console.log("server starting on port : " + port)
 });
