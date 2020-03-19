@@ -1,6 +1,6 @@
 const path = require('path')
 const express = require('express')
-var forceSsl = require('force-ssl-heroku');
+// var forceSsl = require('force-ssl-heroku');
 
 
 const app = express()
@@ -10,8 +10,10 @@ const port = process.env.PORT || 3000
 const publicDirectoryPath = path.join(__dirname, '../dist')
 
 // Setup static directory to serve
-app.use(express.static(publicDirectoryPath))
-app.use(forceSsl);
+app.use(express.static(publicDirectoryPath, {
+    dotfiles: 'allow'
+}))
+// app.use(forceSsl);
 
 
 app.listen(port, () => {
