@@ -1,0 +1,22 @@
+{
+  "name": "c0v1d-19",
+  "version": "1.0.0",
+  "description": "Realtime map for Covid-19 (Wuhan Coronavirus) outbreak.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roeintheglasses/C0V1D-19.git"
+  },
+  "author": "Hrishi Jangir",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/roeintheglasses/C0V1D-19/issues"
+  },
+  "homepage": "https://github.com/roeintheglasses/C0V1D-19#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
