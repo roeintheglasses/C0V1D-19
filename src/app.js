@@ -16,7 +16,7 @@ const options = {
 };
 
 const app = express()
-const port = 443
+const port = 8085
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../dist')
