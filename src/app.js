@@ -1,7 +1,20 @@
 const path = require('path')
 const express = require('express')
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
 // var forceSsl = require('force-ssl-heroku');
 
+
+const privateKey = fs.readFileSync(__dirname + '/sslforfree/private.key');
+const certificate = fs.readFileSync(__dirname + '/sslforfree/certificate.crt');
+const ca = fs.readFileSync(__dirname + '/sslforfree/ca_bundle.crt');
+
+const credentials = {
+    key: privateKey,
+    cert: certificate,
+    ca: ca
+};
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -15,7 +28,13 @@ app.use(express.static(publicDirectoryPath, {
 }))
 // app.use(forceSsl);
 
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
 
-app.listen(port, () => {
-    console.log('Server is up on port : ' + port + '.')
-})
+httpServer.listen(80, () => {
+    console.log('HTTP Server running on port 80');
+});
+
+httpsServer.listen(443, () => {
+    console.log('HTTPS Server running on port 443');
+});
